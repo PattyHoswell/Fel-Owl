@@ -10,6 +10,6 @@ namespace Patty_FelOwl_MOD
     {
         public const string GUID = "Patty_FelOwl_MOD";
         public const string Name = "Fel Owl";
-        public const string Version = "1.0.0";
+        public const string Version = "1.0.1";
     }
 }

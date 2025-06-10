@@ -45,7 +45,7 @@ namespace Patty_FelOwl_MOD
             Texture2D image = CaptureScreenshot(owl);
             OwlPreviewSpr = Sprite.Create(image, new Rect(0, 0, image.width, image.height), Vector2.zero);
 
-            Destroy(owl.gameObject);
+            DestroyImmediate(owl.gameObject);
         }
         void LoadSpineAsset()
         {
@@ -116,7 +116,6 @@ namespace Patty_FelOwl_MOD
                                                                                     );
             instance.gameObject.layer = LayerMask.NameToLayer("UI");
             instance.name = "Owl";
-            instance.transform.localPosition = Vector3.zero;
 
             instance.Initialize(false);
             instance.Skeleton.SetToSetupPose();
@@ -166,8 +165,8 @@ namespace Patty_FelOwl_MOD
             tex.Apply();
             
             RenderTexture.active = oldRT;
-            Destroy(cameraGO);
-            Destroy(rt);
+            DestroyImmediate(cameraGO);
+            DestroyImmediate(rt);
 
             return tex;
         }

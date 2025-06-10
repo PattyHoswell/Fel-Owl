@@ -32,7 +32,7 @@ namespace Patty_FelOwl_MOD
             typeof(float),
             typeof(Action<CharacterUI.AnimNote>),
         })]
-        public static void PlayAnim_Postfix(CharacterUIMeshSpine __instance, CharacterUI.Anim animType, bool loop, float startTime)
+        public static void PlayAnim(CharacterUIMeshSpine __instance, CharacterUI.Anim animType, bool loop, float startTime)
         {
             if (__instance.SkeletonAnimation.name == "Owl")
             {
@@ -69,16 +69,18 @@ namespace Patty_FelOwl_MOD
             var image = __instance.GetComponent<Image>();
             if (image != null &&
                 image.sprite != null &&
-                image.sprite.name == "PRT_Fel_Base" &&
-                image.transform.Find("Owl") == null)
+                image.sprite.name == "PRT_Fel_Base")
             {
-                Plugin.CreateUIOwl(__instance.transform);
+                if (image.transform.Find("Owl") == null)
+                {
+                    Plugin.CreateUIOwl(__instance.transform);
+                }
                 return false;
             }
             return true;
         }
         [HarmonyPostfix, HarmonyPatch(typeof(CharacterDialogueScreen), "InstantiatePrefab")]
-        public static void ShowDialogue(ref GameObject __result)
+        public static void InstantiatePrefab(ref GameObject __result)
         {
             if (__result != null)
             {
